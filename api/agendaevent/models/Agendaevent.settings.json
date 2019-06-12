@@ -1,0 +1,46 @@
+{
+  "connection": "default",
+  "collectionName": "agendaevent",
+  "info": {
+    "name": "agendaevent",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "startTime": {
+      "required": true,
+      "type": "date"
+    },
+    "endTime": {
+      "required": true,
+      "type": "date"
+    },
+    "category": {
+      "model": "agendaeventcategory"
+    },
+    "day": {
+      "model": "agendaday",
+      "via": "events"
+    },
+    "speakers": {
+      "collection": "speaker",
+      "dominant": true,
+      "via": "agendaEvents"
+    }
+  }
+}

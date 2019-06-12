@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/venues",
+      "handler": "Venue.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/venues/count",
+      "handler": "Venue.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/venues/:_id",
+      "handler": "Venue.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/venues",
+      "handler": "Venue.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/venues/:_id",
+      "handler": "Venue.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/venues/:_id",
+      "handler": "Venue.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

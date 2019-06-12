@@ -1,0 +1,50 @@
+{
+  "connection": "default",
+  "collectionName": "contentcontrol",
+  "info": {
+    "name": "contentcontrol",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "showSpeakers": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
+    },
+    "showSponsors": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
+    },
+    "showAgenda": {
+      "required": true,
+      "default": true,
+      "type": "boolean"
+    },
+    "ticketsOnSale": {
+      "required": true,
+      "type": "boolean"
+    },
+    "facebookUrl": {
+      "type": "string"
+    },
+    "linkedinUrl": {
+      "type": "string"
+    },
+    "instagramUrl": {
+      "type": "string"
+    },
+    "bylawUrl": {
+      "type": "string"
+    },
+    "privacyPolicyUrl": {
+      "type": "string"
+    }
+  }
+}

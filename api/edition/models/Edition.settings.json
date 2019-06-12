@@ -1,0 +1,71 @@
+{
+  "connection": "default",
+  "collectionName": "edition",
+  "info": {
+    "name": "edition",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "year": {
+      "type": "integer",
+      "unique": true,
+      "required": true
+    },
+    "current": {
+      "required": true,
+      "type": "boolean",
+      "unique": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "coverPhoto": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "startDate": {
+      "unique": true,
+      "required": true,
+      "type": "date"
+    },
+    "endDate": {
+      "unique": true,
+      "required": true,
+      "type": "date"
+    },
+    "venue": {
+      "model": "venue"
+    },
+    "sponsorCategories": {
+      "collection": "sponsorcategory",
+      "via": "editions",
+      "dominant": true
+    },
+    "teamMembers": {
+      "collection": "teammember",
+      "via": "editions",
+      "dominant": true
+    },
+    "sponsors": {
+      "collection": "sponsor",
+      "via": "editions",
+      "dominant": true
+    },
+    "agendaDays": {
+      "collection": "agendaday",
+      "via": "edition"
+    },
+    "speakers": {
+      "collection": "speaker",
+      "dominant": true,
+      "via": "editions"
+    }
+  }
+}

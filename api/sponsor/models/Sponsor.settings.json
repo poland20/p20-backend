@@ -1,0 +1,43 @@
+{
+  "connection": "default",
+  "collectionName": "sponsor",
+  "info": {
+    "name": "sponsor",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "unique": true,
+      "required": true,
+      "type": "string"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "showInPrevious": {
+      "type": "boolean",
+      "required": true
+    },
+    "category": {
+      "model": "sponsorcategory"
+    },
+    "editions": {
+      "collection": "edition",
+      "via": "sponsors"
+    }
+  }
+}

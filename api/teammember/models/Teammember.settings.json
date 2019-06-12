@@ -1,0 +1,45 @@
+{
+  "connection": "default",
+  "collectionName": "teammember",
+  "info": {
+    "name": "teammember",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "position": {
+      "required": true,
+      "type": "string"
+    },
+    "organisation": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "description": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "editions": {
+      "collection": "edition",
+      "via": "teamMembers"
+    }
+  }
+}

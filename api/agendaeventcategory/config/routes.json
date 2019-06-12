@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/agendaeventcategories",
+      "handler": "Agendaeventcategory.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/agendaeventcategories/count",
+      "handler": "Agendaeventcategory.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/agendaeventcategories/:_id",
+      "handler": "Agendaeventcategory.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/agendaeventcategories",
+      "handler": "Agendaeventcategory.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/agendaeventcategories/:_id",
+      "handler": "Agendaeventcategory.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/agendaeventcategories/:_id",
+      "handler": "Agendaeventcategory.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

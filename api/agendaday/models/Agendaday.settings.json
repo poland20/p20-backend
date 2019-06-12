@@ -1,0 +1,38 @@
+{
+  "connection": "default",
+  "collectionName": "agendaday",
+  "info": {
+    "name": "agendaday",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "date": {
+      "required": true,
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    },
+    "venue": {
+      "model": "venue"
+    },
+    "edition": {
+      "model": "edition",
+      "via": "agendaDays"
+    },
+    "events": {
+      "collection": "agendaevent",
+      "via": "day"
+    }
+  }
+}

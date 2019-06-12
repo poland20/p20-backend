@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "speaker",
+  "info": {
+    "name": "speaker",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "organisation": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "description": {
+      "type": "text"
+    },
+    "editions": {
+      "collection": "edition",
+      "via": "speakers"
+    },
+    "agendaEvents": {
+      "collection": "agendaevent",
+      "via": "speakers"
+    }
+  }
+}

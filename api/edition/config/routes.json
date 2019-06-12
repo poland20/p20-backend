@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/editions",
+      "handler": "Edition.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/editions/count",
+      "handler": "Edition.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/editions/:_id",
+      "handler": "Edition.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/editions",
+      "handler": "Edition.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/editions/:_id",
+      "handler": "Edition.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/editions/:_id",
+      "handler": "Edition.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

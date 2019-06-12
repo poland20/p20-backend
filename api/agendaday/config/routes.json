@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/agendadays",
+      "handler": "Agendaday.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/agendadays/count",
+      "handler": "Agendaday.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/agendadays/:_id",
+      "handler": "Agendaday.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/agendadays",
+      "handler": "Agendaday.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/agendadays/:_id",
+      "handler": "Agendaday.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/agendadays/:_id",
+      "handler": "Agendaday.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
