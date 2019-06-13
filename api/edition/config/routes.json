@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/currentEdition",
+      "handler": "Edition.currentEdition",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/editions",
       "handler": "Edition.find",
       "config": {

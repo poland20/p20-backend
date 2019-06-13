@@ -18,9 +18,7 @@
       "required": true
     },
     "current": {
-      "required": true,
-      "type": "boolean",
-      "unique": true
+      "type": "boolean"
     },
     "description": {
       "type": "text"
@@ -64,8 +62,8 @@
     },
     "speakers": {
       "collection": "speaker",
-      "dominant": true,
-      "via": "editions"
+      "via": "editions",
+      "dominant": true
     }
   }
 }

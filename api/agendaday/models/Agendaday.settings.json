@@ -26,13 +26,13 @@
     "venue": {
       "model": "venue"
     },
-    "edition": {
-      "model": "edition",
-      "via": "agendaDays"
-    },
     "events": {
       "collection": "agendaevent",
       "via": "day"
+    },
+    "edition": {
+      "model": "edition",
+      "via": "agendaDays"
     }
   }
 }
