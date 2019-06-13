@@ -1,7 +1,7 @@
 {
   "name": "p20-backend",
   "version": "2.0.19",
-  "description": "A Strapi application.",
+  "description": "Strapi API backend for Poland 2.0 services.",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -35,9 +35,5 @@
     "node": "^10.0.0",
     "npm": ">= 6.0.0"
   },
-  "license": "MIT",
-  "customs": {
-    "uuid": "d92a1d83-7ec3-4df9-824c-bdd45c2edeec"
-  },
-  "node": "10.16.0"
+  "license": "MIT"
 }
