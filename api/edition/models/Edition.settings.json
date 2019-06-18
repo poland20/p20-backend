@@ -46,24 +46,28 @@
       "via": "editions",
       "dominant": true
     },
-    "teamMembers": {
-      "collection": "teammember",
-      "via": "editions",
-      "dominant": true
-    },
-    "sponsors": {
-      "collection": "sponsor",
-      "via": "editions",
-      "dominant": true
-    },
     "agendaDays": {
       "collection": "agendaday",
       "via": "edition"
     },
+    "teamMembers": {
+      "collection": "teammember",
+      "dominant": true,
+      "via": "editions"
+    },
+    "sponsors": {
+      "collection": "sponsor",
+      "dominant": true,
+      "via": "editions"
+    },
+    "speakerCategories": {
+      "collection": "speakercategory",
+      "via": "edition"
+    },
     "speakers": {
       "collection": "speaker",
-      "via": "editions",
-      "dominant": true
+      "dominant": true,
+      "via": "editions"
     }
   }
 }

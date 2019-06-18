@@ -37,6 +37,9 @@
     "editions": {
       "collection": "edition",
       "via": "speakers"
+    },
+    "category": {
+      "model": "speakercategory"
     }
   }
 }
