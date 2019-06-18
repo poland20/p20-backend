@@ -1,19 +1,22 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "agendaeventcategory",
   "info": {
     "name": "agendaeventcategory",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "name": {
       "required": true,
       "type": "string"
     },
-    "colour": {
+    "color": {
       "required": true,
       "type": "string"
     }
