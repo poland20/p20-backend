@@ -11,6 +11,6 @@ module.exports = {
             .map(ast => ast.alias)
             .join(' ');
 
-        return Edition.findOne().populate(populate);
+        return Edition.findOne({ current: true }).populate(populate);
     }
 };
