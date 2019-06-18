@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/speakercategories",
+      "handler": "Speakercategory.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/speakercategories/count",
+      "handler": "Speakercategory.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/speakercategories/:_id",
+      "handler": "Speakercategory.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/speakercategories",
+      "handler": "Speakercategory.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/speakercategories/:_id",
+      "handler": "Speakercategory.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/speakercategories/:_id",
+      "handler": "Speakercategory.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
