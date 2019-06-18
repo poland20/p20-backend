@@ -45,6 +45,9 @@
     },
     "privacyPolicyUrl": {
       "type": "string"
+    },
+    "githubUrl": {
+      "type": "string"
     }
   }
 }
