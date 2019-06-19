@@ -27,10 +27,6 @@
       "default": true,
       "type": "boolean"
     },
-    "ticketsOnSale": {
-      "required": true,
-      "type": "boolean"
-    },
     "facebookUrl": {
       "type": "string"
     },
@@ -48,6 +44,9 @@
     },
     "githubUrl": {
       "type": "string"
+    },
+    "ticketControl": {
+      "model": "ticketcontrol"
     }
   }
 }

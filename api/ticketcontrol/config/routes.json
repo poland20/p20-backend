@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ticketcontrols",
+      "handler": "Ticketcontrol.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ticketcontrols/count",
+      "handler": "Ticketcontrol.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ticketcontrols/:_id",
+      "handler": "Ticketcontrol.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ticketcontrols",
+      "handler": "Ticketcontrol.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ticketcontrols/:_id",
+      "handler": "Ticketcontrol.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ticketcontrols/:_id",
+      "handler": "Ticketcontrol.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

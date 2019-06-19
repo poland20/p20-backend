@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "ticketcontrol",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "onSale": {
+      "type": "boolean"
+    },
+    "salesDate": {
+      "required": true,
+      "type": "date"
+    },
+    "description": {
+      "type": "text"
+    },
+    "showCountdown": {
+      "type": "boolean"
+    }
+  }
+}
