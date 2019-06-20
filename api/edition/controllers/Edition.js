@@ -5,5 +5,5 @@
  */
 
 module.exports = {
-    currentEdition: () => strapi.services.edition.currentEdition()
+    currentEdition: params => strapi.services.edition.currentEdition(params)
 };

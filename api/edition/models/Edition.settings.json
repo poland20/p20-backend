@@ -14,8 +14,8 @@
   "attributes": {
     "year": {
       "type": "integer",
-      "unique": true,
-      "required": true
+      "required": true,
+      "unique": true
     },
     "current": {
       "type": "boolean"
@@ -52,21 +52,21 @@
     },
     "teamMembers": {
       "collection": "teammember",
-      "dominant": true,
-      "via": "editions"
+      "via": "editions",
+      "dominant": true
     },
     "sponsors": {
       "collection": "sponsor",
-      "dominant": true,
-      "via": "editions"
-    },
-    "speakerCategories": {
-      "collection": "speakercategory",
-      "via": "edition"
+      "via": "editions",
+      "dominant": true
     },
     "speakers": {
       "collection": "speaker",
-      "dominant": true,
+      "via": "editions",
+      "dominant": true
+    },
+    "speakerCategories": {
+      "collection": "speakercategory",
       "via": "editions"
     }
   }
