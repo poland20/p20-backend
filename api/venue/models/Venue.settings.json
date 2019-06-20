@@ -1,12 +1,15 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "venue",
   "info": {
     "name": "venue",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "name": {
@@ -14,7 +17,8 @@
       "type": "string"
     },
     "location": {
-      "type": "string"
+      "required": true,
+      "type": "text"
     }
   }
 }
