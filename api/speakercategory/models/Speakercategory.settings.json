@@ -1,21 +1,25 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "speakercategory",
   "info": {
     "name": "speakercategory",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "name": {
       "required": true,
       "type": "string"
     },
-    "edition": {
-      "model": "edition",
-      "via": "speakerCategories"
+    "editions": {
+      "collection": "edition",
+      "via": "speakerCategories",
+      "dominant": true
     }
   }
 }
