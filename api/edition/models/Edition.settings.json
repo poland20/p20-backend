@@ -41,11 +41,6 @@
     "venue": {
       "model": "venue"
     },
-    "sponsorCategories": {
-      "collection": "sponsorcategory",
-      "via": "editions",
-      "dominant": true
-    },
     "agendaDays": {
       "collection": "agendaday",
       "via": "edition"
@@ -64,6 +59,11 @@
       "collection": "speaker",
       "via": "editions",
       "dominant": true
+    },
+    "sponsorCategories": {
+      "collection": "sponsorcategory",
+      "dominant": true,
+      "via": "editions"
     },
     "speakerCategories": {
       "collection": "speakercategory",

@@ -5,11 +5,11 @@
  */
 
 module.exports = {
-    currentEdition: params => {
+    findOne(params) {
         let populate = Edition.associations
             .filter(ast => ast.autoPopulate !== false)
             .map(ast => ast.alias);
-        
+
         populate = populate.concat([
             {
                 path: 'agendaDays',
@@ -30,6 +30,20 @@ module.exports = {
             }
         ]);
 
-        return Edition.findOne({ current: true }).populate(populate);
+        const exclusions = {
+            __v: false,
+            createdAt: false,
+            updatedAt: false
+        }
+
+        const edition = Edition.findOne(params, exclusions).populate(populate);
+
+        return edition;
+    },
+    currentEdition(params) {
+        return strapi.services.edition.findOne({ current: true });
+    },
+    findOneByYear(params) {
+        return strapi.services.edition.findOne({ year: params.year });
     }
 };

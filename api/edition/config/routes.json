@@ -26,8 +26,8 @@
     },
     {
       "method": "GET",
-      "path": "/editions/:_id",
-      "handler": "Edition.findOne",
+      "path": "/editions/:year",
+      "handler": "Edition.findOneByYear",
       "config": {
         "policies": []
       }
