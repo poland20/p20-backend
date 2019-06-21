@@ -19,6 +19,10 @@
     "editions": {
       "collection": "edition",
       "via": "sponsorCategories"
+    },
+    "priority": {
+      "type": "integer",
+      "default": "0"
     }
   }
 }

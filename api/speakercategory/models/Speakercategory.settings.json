@@ -20,6 +20,10 @@
       "collection": "edition",
       "via": "speakerCategories",
       "dominant": true
+    },
+    "priority": {
+      "type": "integer",
+      "default": "0"
     }
   }
 }
