@@ -47,6 +47,10 @@
     },
     "ticketControl": {
       "model": "ticketcontrol"
+    },
+    "showPreviousSponsors": {
+      "default": true,
+      "type": "boolean"
     }
   }
 }
