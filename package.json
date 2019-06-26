@@ -18,17 +18,17 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "strapi": "~3.0.0-beta.7",
-    "strapi-admin": "~3.0.0-beta.7",
-    "strapi-hook-mongoose": "~3.0.0-beta.7",
-    "strapi-plugin-content-manager": "~3.0.0-beta.7",
-    "strapi-plugin-content-type-builder": "~3.0.0-beta.7",
-    "strapi-plugin-email": "~3.0.0-beta.7",
-    "strapi-plugin-settings-manager": "~3.0.0-beta.7",
-    "strapi-plugin-upload": "~3.0.0-beta.7",
-    "strapi-plugin-users-permissions": "~3.0.0-beta.7",
-    "strapi-provider-upload-cloudinary": "^3.0.0-alpha.15",
-    "strapi-utils": "~3.0.0-beta.7"
+    "strapi": "~3.0.0-beta",
+    "strapi-admin": "~3.0.0-beta",
+    "strapi-hook-mongoose": "~3.0.0-beta",
+    "strapi-plugin-content-manager": "~3.0.0-beta",
+    "strapi-plugin-content-type-builder": "~3.0.0-beta",
+    "strapi-plugin-email": "~3.0.0-beta",
+    "strapi-plugin-settings-manager": "~3.0.0-beta",
+    "strapi-plugin-upload": "~3.0.0-beta",
+    "strapi-plugin-users-permissions": "~3.0.0-beta",
+    "strapi-provider-upload-cloudinary": "~3.0.0-beta",
+    "strapi-utils": "~3.0.0-beta"
   },
   "engines": {
     "node": "^10.0.0",
