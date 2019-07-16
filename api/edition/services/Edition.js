@@ -30,13 +30,7 @@ module.exports = {
             }
         ]);
 
-        const exclusions = {
-            __v: false,
-            createdAt: false,
-            updatedAt: false
-        }
-
-        const edition = Edition.findOne(params, exclusions).populate(populate);
+        const edition = Edition.findOne(params).populate(populate);
 
         return edition;
     },

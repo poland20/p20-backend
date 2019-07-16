@@ -12,6 +12,10 @@
     ]
   },
   "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
     "year": {
       "type": "integer",
       "required": true,
@@ -62,8 +66,8 @@
     },
     "sponsorCategories": {
       "collection": "sponsorcategory",
-      "dominant": true,
-      "via": "editions"
+      "via": "editions",
+      "dominant": true
     },
     "speakerCategories": {
       "collection": "speakercategory",

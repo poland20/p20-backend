@@ -16,14 +16,14 @@
       "required": true,
       "type": "string"
     },
-    "editions": {
-      "collection": "edition",
-      "via": "speakerCategories",
-      "dominant": true
-    },
     "priority": {
       "type": "integer",
       "default": "0"
+    },
+    "editions": {
+      "collection": "edition",
+      "dominant": true,
+      "via": "speakerCategories"
     }
   }
 }

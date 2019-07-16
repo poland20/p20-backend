@@ -34,12 +34,12 @@
       "collection": "agendaevent",
       "via": "speakers"
     },
+    "category": {
+      "model": "speakercategory"
+    },
     "editions": {
       "collection": "edition",
       "via": "speakers"
-    },
-    "category": {
-      "model": "speakercategory"
     }
   }
 }

@@ -16,13 +16,13 @@
       "required": true,
       "type": "string"
     },
-    "editions": {
-      "collection": "edition",
-      "via": "sponsorCategories"
-    },
     "priority": {
       "type": "integer",
       "default": "0"
+    },
+    "editions": {
+      "collection": "edition",
+      "via": "sponsorCategories"
     }
   }
 }
