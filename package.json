@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "dotenv": "~8.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.11.0",
@@ -18,17 +19,18 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "strapi": "~3.0.0-beta",
-    "strapi-admin": "~3.0.0-beta",
-    "strapi-hook-mongoose": "~3.0.0-beta",
-    "strapi-plugin-content-manager": "~3.0.0-beta",
-    "strapi-plugin-content-type-builder": "~3.0.0-beta",
-    "strapi-plugin-email": "~3.0.0-beta",
-    "strapi-plugin-settings-manager": "~3.0.0-beta",
-    "strapi-plugin-upload": "~3.0.0-beta",
-    "strapi-plugin-users-permissions": "~3.0.0-beta",
-    "strapi-provider-upload-cloudinary": "~3.0.0-beta",
-    "strapi-utils": "~3.0.0-beta"
+    "strapi": "beta",
+    "strapi-admin": "beta",
+    "strapi-hook-mongoose": "beta",
+    "strapi-plugin-content-manager": "beta",
+    "strapi-plugin-content-type-builder": "beta",
+    "strapi-plugin-email": "beta",
+    "strapi-plugin-settings-manager": "beta",
+    "strapi-plugin-upload": "beta",
+    "strapi-plugin-users-permissions": "beta",
+    "strapi-provider-upload-cloudinary": "beta",
+    "strapi-utils": "beta",
+    "stripe": "~7.4.0"
   },
   "engines": {
     "node": "^10.0.0",
