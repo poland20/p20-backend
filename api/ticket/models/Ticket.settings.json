@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "ticket",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "required": true,
+      "type": "string"
+    },
+    "email": {
+      "required": true,
+      "type": "email"
+    },
+    "type": {
+      "model": "tickettype"
+    },
+    "checkedIn": {
+      "type": "boolean"
+    },
+    "order": {
+      "model": "order",
+      "via": "tickets"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "order",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "tickets": {
+      "collection": "ticket",
+      "via": "order"
+    },
+    "stripe": {
+      "required": true,
+      "type": "string"
+    }
+  }
+}
