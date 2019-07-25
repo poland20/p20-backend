@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:10 AS base
+FROM mhart/alpine-node:10
 
 WORKDIR /api
 COPY . .
@@ -13,7 +13,5 @@ RUN apk add --no-cache \
     libpng-dev libjpeg-turbo-dev giflib-dev tiff-dev \
     zlib-dev
 
-ARG config
-
-RUN yarn
-RUN NODE_ENV=$config yarn build
+RUN npm install
+RUN npm run build
