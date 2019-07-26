@@ -1,6 +1,6 @@
 FROM node:10-alpine AS builder
 
-RUN apk add --no-cache \
+RUN apk --no-cache add \
     build-base \
     libtool \
     autoconf \
@@ -10,10 +10,16 @@ RUN apk add --no-cache \
     libpng-dev libjpeg-turbo-dev giflib-dev tiff-dev \
     zlib-dev
 
-WORKDIR /api
-COPY . .
+COPY package.json yarn.lock ./
+RUN yarn
+
+FROM node:10-alpine
 
 ARG NODE_ENV
 
-RUN yarn
+WORKDIR /api
+
+COPY --from=builder node_modules node_modules
+COPY . .
+
 RUN NODE_ENV=${NODE_ENV} yarn build
