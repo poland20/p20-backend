@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  api:
+    build:
+      args:
+        - NODE_ENV=staging
+    environment:
+      - NODE_ENV=staging
+  db:
+    command: "--smallfiles --logpath=/dev/null"
