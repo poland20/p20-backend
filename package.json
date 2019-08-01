@@ -3,21 +3,22 @@
   "version": "2.0.19",
   "description": "Strapi API backend for Poland 2.0 services.",
   "scripts": {
-    "develop": "strapi develop",
+    "dev:db": "docker-compose -f docker-compose.development.yml up db",
+    "dev": "concurrently \"yarn dev:db\" \"strapi develop\"",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "lint": "eslint api/**/*.js config/**/*.js plugins/**/*.js"
+    "strapi": "strapi"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "dotenv": "~8.0.0",
+    "concurrently": "^4.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-react": "^7.7.0"
   },
   "dependencies": {
+    "dotenv": "~8.0.0",
     "lodash": "^4.17.5",
     "strapi": "beta",
     "strapi-admin": "beta",
