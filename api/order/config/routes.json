@@ -11,7 +11,7 @@
     {
       "method": "POST",
       "path": "/orders/intent",
-      "handler": "Order.paymentIntent",
+      "handler": "Order.createPaymentIntent",
       "config": {
         "policies": []
       }

@@ -1,21 +1,51 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "order",
   "info": {
     "name": "order",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "tickets": {
       "collection": "ticket",
       "via": "order"
     },
-    "stripe": {
+    "paymentIntent": {
+      "type": "string",
+      "unique": true
+    },
+    "status": {
       "required": true,
+      "enum": [
+        "failed",
+        "manual",
+        "pending",
+        "paid",
+        "refunded"
+      ],
+      "type": "enumeration"
+    },
+    "date": {
+      "required": true,
+      "type": "date"
+    },
+    "clientSecret": {
+      "unique": true,
       "type": "string"
+    },
+    "basket": {
+      "required": true,
+      "type": "json"
+    },
+    "participants": {
+      "required": true,
+      "type": "json"
     }
   }
 }
