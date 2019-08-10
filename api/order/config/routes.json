@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/orders/confirm",
+      "handler": "Order.confirmPaymentIntent",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/orders/count",
       "handler": "Order.count",

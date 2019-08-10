@@ -1,3 +1,4 @@
 {
-  "stripeApiKey": "${process.env.STRIPE_SK_LIVE}"
+  "stripeApiKey": "${process.env.STRIPE_SK_LIVE}",
+  "stripeWebhookSecret": "${process.env.STRIPE_WH_SECRET_LIVE}"
 }
