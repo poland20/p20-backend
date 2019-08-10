@@ -1,10 +1,11 @@
 {
   "name": "p20-backend",
-  "version": "2.0.19",
+  "version": "2.19.8",
   "description": "Strapi API backend for Poland 2.0 services.",
   "scripts": {
-    "dev:db": "docker-compose -f docker-compose.development.yml up db",
-    "dev": "concurrently \"yarn dev:db\" \"strapi develop\"",
+    "dev:db": "docker-compose -f docker-compose.development.yml up -d db",
+    "dev": "yarn dev:db && strapi develop",
+    "ngrok": "./ngrok http 1337",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "dotenv": "~8.0.0",
+    "koa-body": "~4.1.0",
     "lodash": "^4.17.5",
     "strapi": "beta",
     "strapi-admin": "beta",
@@ -29,9 +31,13 @@
     "strapi-plugin-settings-manager": "beta",
     "strapi-plugin-upload": "beta",
     "strapi-plugin-users-permissions": "beta",
+    "strapi-provider-email-nodemailer": "~1.0.2",
     "strapi-provider-upload-cloudinary": "beta",
     "strapi-utils": "beta",
     "stripe": "~7.4.0"
+  },
+  "resolutions": {
+    "strapi/**/koa-body": "~4.1.0"
   },
   "engines": {
     "node": "^10.0.0",
