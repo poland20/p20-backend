@@ -24,7 +24,6 @@
       "required": true,
       "enum": [
         "failed",
-        "manual",
         "pending",
         "paid",
         "refunded"
@@ -36,7 +35,6 @@
       "type": "date"
     },
     "clientSecret": {
-      "unique": true,
       "type": "string"
     },
     "basket": {
@@ -46,6 +44,10 @@
     "participants": {
       "required": true,
       "type": "json"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
     }
   }
 }
