@@ -1,0 +1,71 @@
+doctype html
+html(lang="en-gb")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="style.css", data-inline)
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat")
+    title Your Ticket Confirmation
+  body
+    div(class="header flex" style="padding: 16px;")
+      img(src='https://res.cloudinary.com/dg1royeho/image/upload/v1565893284/logo_no_lines_WHITE_png_sbh3l7.png')
+      h1 Ticket Confirmation
+    div(class="main" style="padding: 0 16px;")
+      p Dear #{name},
+      p Thank you for your purchase! This e-mail confirms the successful purchase of the <b>#{ticket.type.name}</b> ticket for order #{order.code}.
+      p We can't wait to see you during this exciting event!
+      br
+      h2 Save the Date
+      p Don't forget that this year's conference officially starts on <b>#{edition.startDate}</b> from <b>#{edition.startTime}</b>.
+      p We will be situated in <b>#{venue.name}</b>, which is located at
+      b #{venue.location}
+      br
+      br
+      h2 On the Day
+      p During the morning registration, you will have to present your ticket in order to check-in.
+      p The cool-and-hip way of doing this is by downloading the <b>Poland 2.0 Summit app</b>, available on Android and iOS.
+      div(class="flex")
+        a(target="_blank" href="https://play.google.com/store/apps/details?id=com.poland20.app")
+          img(
+            src="https://play.google.com/intl/en_gb/badges/images/generic/en_badge_web_generic.png"
+            height="60px"
+          )
+        a(target="_blank" href="https://apps.apple.com/gb/app/poland-2-0-summit/id1443577236")
+          img(
+            src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png",
+            height="42px"
+          )
+      p Once you're in the app, enter your ticket code:
+      div(class="center")
+        h3 #{ticket.code}
+      u Keep it safe in case something goes wrong!
+      p We highly recommend you check-in using our app, as you will gain access to our <b>priority queue</b>!
+      p Alternatively, you can present this QR code at the registration desk in the normal queue:
+      div(class="center")
+        div
+          img(src=`https://chart.googleapis.com/chart?cht=qr&chl=${ticket.code}&chs=320x320&choe=UTF-8&chld=L|2`)
+      br
+      h2 Other Stuff
+      p If you have any questions or concerns, feel free to contact us by replying to this e-mail (<a href="mailto:contact@poland20.com">contact@poland20.com</a>).
+      p Otherwise, prepare yourself for a fantastic weekend to come!
+      p Follow us on social media to stay up-to-date with news regarding the conference.
+      p Visit our website (<a target="_blank" href="https://poland20.com">poland20.com</a>) to discover the agenda, speakers, and to learn more about Poland 2.0 Summit.
+    div(class="footer flex" style="padding: 16px;")
+      a(target="_blank" href="https://www.facebook.com/Poland20Summit/")
+        img(
+          src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-facebook-4.png&r=245&g=245&b=245"
+          height="48px"
+        )
+      a(target="_blank" href="https://www.instagram.com/poland20summit/")
+        img(
+          src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2016/png/iconmonstr-instagram-11.png&r=245&g=245&b=245"
+          height="48px"
+        )
+      a(target="_blank" href="https://www.linkedin.com/company/poland20/")
+        img(
+          src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2012/png/iconmonstr-linkedin-3.png&r=245&g=245&b=245"
+          height="48px"
+        )
+
+

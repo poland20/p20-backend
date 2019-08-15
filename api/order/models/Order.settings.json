@@ -12,10 +12,6 @@
     ]
   },
   "attributes": {
-    "tickets": {
-      "collection": "ticket",
-      "via": "order"
-    },
     "paymentIntent": {
       "type": "string",
       "unique": true
@@ -48,6 +44,15 @@
     "amount": {
       "type": "decimal",
       "required": true
+    },
+    "tickets": {
+      "collection": "ticket",
+      "via": "order"
+    },
+    "code": {
+      "unique": true,
+      "required": true,
+      "type": "string"
     }
   }
 }

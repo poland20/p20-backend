@@ -2,6 +2,7 @@
 
 const stripe = require('stripe');
 const unparsed = require('koa-body/unparsed.js');
+const shortid = require('shortid');
 
 module.exports = {
   createPaymentIntent: async ctx => {
@@ -38,14 +39,15 @@ module.exports = {
       })
       .then(async (paymentIntent) => {
         strapi.services.order.create({
-          basket: JSON.stringify(participants, null, 2),
-          participants: JSON.stringify(participants, null, 2),
+          basket,
+          participants,
           amount: amount / 100,
           paymentIntent: paymentIntent.id,
           status: 'pending',
-          date: Date.now()
+          date: Date.now(),
+          code: shortid.generate()
         });
-    
+
         ctx.send({ client_secret: paymentIntent.client_secret });
       })
       .catch(() => ctx.response.badImplementation('Could not create a PaymentIntent.'));
@@ -74,22 +76,27 @@ module.exports = {
     if (!order) {
       return ctx.response.badImplementation('Could not find an order for this payment intent.');
     }
-    if (order.status !== 'pending') {
-      return ctx.response.conflict('This order has already been processed.');
+    if (paymentIntent.livemode && order.status !== 'pending') {
+      return ctx.send('This order has already been processed.');
     }
 
-    const participants = JSON.parse(order.participants);
-    const basket = JSON.parse(order.basket);
     await Promise
-      .all(participants.map(
-        ({ ticket, name, email }) => strapi.services.ticket.create({
-          name,
-          email,
-          type: ticket,
-          order: order.id,
-        })
+      .all(order.participants.map(
+        ({ ticket, name, email }) => strapi.services.ticket
+          .create({
+            name,
+            email,
+            type: ticket,
+            order: order.id,
+            date: Date.now(),
+            code: shortid.generate()
+          })
+          .then(strapi.services.ticket.sendConfirmation)
+          // .then(() => console.log('Email sent'))
+          // .catch(console.error)
+          .catch(err => ctx.response.badImplementation(`Could not generate tickets: ${err}`))
       ))
-      .then(() => Promise.all(Object.entries(basket).map(
+      .then(() => Promise.all(Object.entries(order.basket).map(
         async ([id, quantity]) => {
           const ticketType = await Tickettype.findOne({ _id: id });
           const newQuantity = ticketType.quantity - quantity;
@@ -101,8 +108,8 @@ module.exports = {
       .then(() => strapi.services.order.update({ _id: order.id }, {
         status: 'paid'
       }))
-      .catch(err => ctx.response.badImplementation(`Could not generate tickets: ${err}`));
-    
+      .catch(err => ctx.response.badImplementation(`Could not finalise order: ${err}`));
+
     ctx.send(200);
   }
 };
