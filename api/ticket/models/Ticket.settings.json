@@ -1,12 +1,15 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "ticket",
   "info": {
     "name": "ticket",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "name": {
@@ -22,6 +25,17 @@
     },
     "checkedIn": {
       "type": "boolean"
+    },
+    "date": {
+      "type": "date"
+    },
+    "checkedInDate": {
+      "type": "date"
+    },
+    "code": {
+      "unique": true,
+      "required": true,
+      "type": "string"
     },
     "order": {
       "model": "order",
