@@ -13,6 +13,7 @@ module.exports = {
     }
 
     let amount = 0;
+    let description = [];
     const ticketTypes = await Tickettype.find({ active: true });
     for (const { ticket } of participants) {
       const ticketType = ticketTypes.find(ticketType => ticketType.id === ticket);
@@ -26,16 +27,23 @@ module.exports = {
       }
 
       amount += ticketType.price * 100;
+      description.push(`${ticketType.name} (x${quantity})`);
     }
 
     if (amount < 1) {
       return ctx.response.badImplementation('There was a problem with calculating the payment amount.');
     }
 
+    const orderCode = shortid.generate();
+
     return Stripe.paymentIntents
       .create({
         amount,
-        currency: 'gbp'
+        description: description.join(description.length < 2 ? '' : ', '),
+        currency: 'gbp',
+        metadata: {
+          orderCode
+        }
       })
       .then(async (paymentIntent) => {
         strapi.services.order.create({
@@ -45,7 +53,7 @@ module.exports = {
           paymentIntent: paymentIntent.id,
           status: 'pending',
           date: Date.now(),
-          code: shortid.generate()
+          code: orderCode
         });
 
         ctx.send({ client_secret: paymentIntent.client_secret });
@@ -89,7 +97,8 @@ module.exports = {
             type: ticket,
             order: order.id,
             date: Date.now(),
-            code: shortid.generate()
+            code: shortid.generate(),
+            checkedIn: false
           })
           .then(strapi.services.ticket.sendConfirmation)
           // .then(() => console.log('Email sent'))
