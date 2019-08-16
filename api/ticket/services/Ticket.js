@@ -22,8 +22,7 @@ module.exports = {
       ticket: ticket,
       order: ticket.order,
       edition: {
-        startDate: currentEdition.startDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
-        startTime: currentEdition.startDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
+        startDate: currentEdition.endDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
       },
       venue: currentEdition.venue
     });
