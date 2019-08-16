@@ -30,9 +30,6 @@
       "required": true,
       "type": "date"
     },
-    "clientSecret": {
-      "type": "string"
-    },
     "basket": {
       "required": true,
       "type": "json"
