@@ -23,7 +23,7 @@ module.exports = {
       order: ticket.order,
       edition: {
         startDate: currentEdition.startDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
-        startTime: currentEdition.startDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit' })
+        startTime: currentEdition.startDate.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
       },
       venue: currentEdition.venue
     });
@@ -31,7 +31,7 @@ module.exports = {
       .send({
         html,
         to: ticket.email,
-        subject: 'Your Conference Ticket',
+        subject: `Your Conference Ticket [${ticket.code}]`,
       });
   }
 };
