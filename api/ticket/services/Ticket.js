@@ -2,6 +2,7 @@
 
 const Email = require('email-templates');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 /**
  * Read the documentation () to implement custom service functions
@@ -26,11 +27,35 @@ module.exports = {
       },
       venue: currentEdition.venue
     });
-    return strapi.plugins['email'].services.email
-      .send({
-        html,
-        to: ticket.email,
-        subject: `Your Conference Ticket [${ticket.code}]`,
+
+    const transporter = nodemailer.createTransport({
+      service: 'Zoho',
+      host: 'smtp.zoho.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: strapi.config.nodemailerUser,
+        pass: strapi.config.nodemailerPassword
+      }
+    });
+
+    return new Promise((resolve, reject) => {
+      transporter.verify((error) => {
+        if (error) {
+          reject(error);
+        } else {
+          transporter
+            .sendMail({
+              html,
+              from: 'Poland 2.0 Summit <no-reply@poland20.com>',
+              to: ticket.email,
+              replyTo: 'contact@poland20.com',
+              subject: `Your Conference Ticket [${ticket.code}]`
+            })
+            .then(resolve)
+            .catch(err => reject(err));
+        }
       });
+    });
   }
 };

@@ -11,7 +11,7 @@ RUN apk --no-cache add \
     zlib-dev
 
 COPY package.json yarn.lock ./
-RUN yarn
+RUN yarn --prod
 
 FROM node:10-alpine
 

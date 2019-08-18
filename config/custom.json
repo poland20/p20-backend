@@ -1,3 +1,4 @@
 {
-  "myCustomConfiguration": "This configuration is accessible through strapi.config.myCustomConfiguration"
+  "nodemailerUser": "${process.env.NODEMAILER_USER}",
+  "nodemailerPassword": "${process.env.NODEMAILER_PASSWORD}"
 }
