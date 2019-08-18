@@ -88,7 +88,7 @@ module.exports = {
       return ctx.send('This order has already been processed.');
     }
 
-    await Promise
+    return Promise
       .all(order.participants.map(
         ({ ticket, name, email }) => strapi.services.ticket
           .create({
@@ -101,9 +101,6 @@ module.exports = {
             checkedIn: false
           })
           .then(strapi.services.ticket.sendConfirmation)
-          // .then(() => console.log('Email sent'))
-          // .catch(console.error)
-          .catch(err => ctx.response.badImplementation(`Could not generate tickets: ${err}`))
       ))
       .then(() => Promise.all(Object.entries(order.basket).map(
         async ([id, quantity]) => {
@@ -117,8 +114,10 @@ module.exports = {
       .then(() => strapi.services.order.update({ _id: order.id }, {
         status: 'paid'
       }))
-      .catch(err => ctx.response.badImplementation(`Could not finalise order: ${err}`));
-
-    ctx.send(200);
+      .catch(err => {
+        strapi.log.error(err);
+        ctx.response.badImplementation(`Could not finalise order: ${err}`);
+      })
+      .then(() => ctx.send(200));
   }
 };
