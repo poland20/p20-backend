@@ -1,11 +1,11 @@
 .cache
-build
-node_modules
-Dockerfile*
-docker-compose*
 .dockerignore
 .git
 .gitignore
-README.md
-LICENSE
 .vscode
+build
+Dockerfile*
+docker-compose*
+LICENSE
+node_modules
+README.md
