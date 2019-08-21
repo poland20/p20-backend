@@ -10,6 +10,7 @@ RUN apk --no-cache add \
     libpng-dev libjpeg-turbo-dev giflib-dev tiff-dev \
     zlib-dev
 
+ADD packages packages
 COPY package.json yarn.lock ./
 RUN yarn --prod
 
