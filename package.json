@@ -3,7 +3,7 @@
   "version": "2.19.8",
   "description": "Strapi API backend for Poland 2.0 services.",
   "scripts": {
-    "dev:db": "docker-compose -f docker-compose.development.yml up -d db",
+    "dev:db": "sudo docker-compose -f docker-compose.development.yml up -d db",
     "dev": "yarn dev:db && strapi develop",
     "ngrok": "./ngrok http 1337",
     "ngrok:stag": "./ngrok http api.localhost:80",
