@@ -42,7 +42,14 @@ module.exports = {
 
   // After updating a value.
   // Fired after an `update` query.
-  // afterUpdate: async (model, result) => {},
+  afterUpdate: async (model, /*result*/) => {
+    const ticket = model.getUpdate();
+    if (!ticket.email) {
+      return;
+    }
+
+    return strapi.services.ticket.sendConfirmation(ticket);
+  },
 
   // Before destroying a value.
   // Fired before a `delete` query.
