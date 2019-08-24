@@ -19,11 +19,15 @@ module.exports = {
       const ticketType = ticketTypes.find(ticketType => ticketType.id === ticket);
       const quantity = basket[ticket];
       if (!ticketType || quantity < 1) {
-        return ctx.response.badRequest('Basket contains an invalid item/amount.');
+        const error = 'Basket contains an invalid item/amount.';
+        strapi.log.error(error);
+        return ctx.response.badRequest(error);
       }
 
       if (ticketType.quantity < quantity) {
-        return ctx.response.resourceGone('One of the items in the basket is no longer available.');
+        const error = 'One of the items in the basket is no longer available.';
+        strapi.log.error(error);
+        return ctx.response.resourceGone(error);
       }
 
       amount += ticketType.price * 100;
@@ -31,7 +35,9 @@ module.exports = {
     }
 
     if (amount < 1) {
-      return ctx.response.badImplementation('There was a problem with calculating the payment amount.');
+      const error = 'There was a problem with calculating the payment amount.';
+      strapi.log.error(error);
+      return ctx.response.badImplementation(error);
     }
 
     const orderCode = shortid.generate();
@@ -56,9 +62,14 @@ module.exports = {
           code: orderCode
         });
 
+        strapi.log.info(`Successfully created order ${orderCode}`);
         ctx.send({ client_secret: paymentIntent.client_secret });
       })
-      .catch(() => ctx.response.badImplementation('Could not create a PaymentIntent.'));
+      .catch(error => {
+        const message = 'Could not create a PaymentIntent.';
+        strapi.log.error(`${message}\n${error}`);
+        ctx.response.badImplementation(message);
+      });
   },
   confirmPaymentIntent: async ctx => {
     const Stripe = stripe(strapi.config.currentEnvironment.stripeApiKey);
@@ -71,21 +82,28 @@ module.exports = {
         strapi.config.currentEnvironment.stripeWebhookSecret
       );
     } catch (err) {
+      strapi.log.error(`Failed to verify webhook signature\n${err}`);
       return ctx.response.badRequest(err);
     }
 
     if (!event || event.type !== 'payment_intent.succeeded') {
-      return ctx.response.badRequest('Invalid Event type');
+      const error = 'Invalid Event';
+      strapi.log.error(error);
+      return ctx.response.badRequest(error);
     }
 
     const paymentIntent = event.data.object;
 
     const order = await Order.findOne({ paymentIntent: paymentIntent.id });
     if (!order) {
-      return ctx.response.badImplementation('Could not find an order for this payment intent.');
+      const error = `Could not find an order for payment intent ${paymentIntent.id}`;
+      strapi.log.error(error);
+      return ctx.response.badImplementation(error);
     }
     if (paymentIntent.livemode && order.status !== 'pending') {
-      return ctx.send('This order has already been processed.');
+      const warning = `Order ${order.code} has already been processed`;
+      strapi.log.warn(warning);
+      return ctx.send(warning);
     }
 
     return Promise
@@ -102,22 +120,26 @@ module.exports = {
           })
           .then(strapi.services.ticket.sendConfirmation)
       ))
+      .then(() => strapi.services.order.update({ _id: order.id }, {
+        status: 'paid'
+      }))
       .then(() => Promise.all(Object.entries(order.basket).map(
         async ([id, quantity]) => {
-          const ticketType = await Tickettype.findOne({ _id: id });
+          const ticketType = await Tickettype.findById(id);
           const newQuantity = ticketType.quantity - quantity;
           return strapi.services.tickettype.update({ id }, {
             quantity: newQuantity >= 0 ? newQuantity : 0,
           });
         })
       ))
-      .then(() => strapi.services.order.update({ _id: order.id }, {
-        status: 'paid'
-      }))
-      .catch(err => {
-        strapi.log.error(err);
-        ctx.response.badImplementation(`Could not finalise order: ${err}`);
+      .then(() => {
+        strapi.log.info(`Successfully processed order ${order.code}`);
+        ctx.send(200);
       })
-      .then(() => ctx.send(200));
+      .catch(err => {
+        const message = `Could not finalise order ${order.code}`;
+        strapi.log.error(`${message}:\n${err}`);
+        ctx.response.badImplementation(message);
+      });
   }
 };
