@@ -17,7 +17,15 @@ module.exports = {
         }
       }
     });
+
     const currentEdition = await strapi.services.edition.currentEdition();
+    if (!ticket.order.code) {
+      ticket.order = await Order.findById(ticket.order);
+    }
+    if (!ticket.type.name) {
+      ticket.type = await Tickettype.findById(ticket.type);
+    }
+
     const html = await email.render('confirmation', {
       name: ticket.name,
       ticket: ticket,
@@ -39,10 +47,11 @@ module.exports = {
       }
     });
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       transporter.verify((error) => {
         if (error) {
-          reject(error);
+          strapi.log.error(`Failed to connect to SMTP server:\n${error}`);
+          resolve();
         } else {
           transporter
             .sendMail({
@@ -52,8 +61,13 @@ module.exports = {
               replyTo: 'contact@poland20.com',
               subject: `Your Conference Ticket [${ticket.code}]`
             })
-            .then(resolve)
-            .catch(err => reject(err));
+            .then(() => {
+              strapi.log.info(`Successfully sent ticket confirmation ${ticket.code} to ${ticket.email}`);
+            })
+            .catch(err => {
+              strapi.log.error(`Failed to send ticket confirmation ${ticket.code} to ${ticket.email}:\n${err}`);
+            })
+            .finally(resolve);
         }
       });
     });
