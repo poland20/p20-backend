@@ -1,0 +1,51 @@
+{
+  "connection": "default",
+  "collectionName": "survey",
+  "info": {
+    "name": "survey",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "university": {
+      "type": "string"
+    },
+    "course": {
+      "type": "string"
+    },
+    "yearOfStudy": {
+      "enum": [
+        "",
+        "First",
+        "Second",
+        "Third",
+        "Fourth/Fifth",
+        "Master's",
+        "Doctorate"
+      ],
+      "type": "enumeration"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "programmingLanguages": {
+      "type": "text"
+    },
+    "type": {
+      "enum": [
+        "",
+        "Student",
+        "Alumni"
+      ],
+      "type": "enumeration"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}
