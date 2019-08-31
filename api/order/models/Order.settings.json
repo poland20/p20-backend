@@ -42,14 +42,14 @@
       "type": "decimal",
       "required": true
     },
-    "tickets": {
-      "collection": "ticket",
-      "via": "order"
-    },
     "code": {
       "unique": true,
       "required": true,
       "type": "string"
+    },
+    "tickets": {
+      "collection": "ticket",
+      "via": "order"
     }
   }
 }

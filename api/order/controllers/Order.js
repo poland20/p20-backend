@@ -13,7 +13,7 @@ module.exports = {
     }
 
     let amount = 0;
-    let description = [];
+    let description = new Set();
     const ticketTypes = await Tickettype.find({ active: true });
     for (const { ticket } of participants) {
       const ticketType = ticketTypes.find(ticketType => ticketType.id === ticket);
@@ -31,10 +31,10 @@ module.exports = {
       }
 
       amount += ticketType.price * 100;
-      description.push(`${ticketType.name} (x${quantity})`);
+      description.add(`${ticketType.name} (x${quantity})`);
     }
 
-    if (amount < 1) {
+    if (amount < 50) {
       const error = 'There was a problem with calculating the payment amount.';
       strapi.log.error(error);
       return ctx.response.badImplementation(error);
@@ -45,13 +45,13 @@ module.exports = {
     return Stripe.paymentIntents
       .create({
         amount,
-        description: description.join(description.length < 2 ? '' : ', '),
+        description: [...description].join(', '),
         currency: 'gbp',
         metadata: {
           orderCode
         }
       })
-      .then(async (paymentIntent) => {
+      .then((paymentIntent) => {
         strapi.services.order.create({
           basket,
           participants,
@@ -69,7 +69,20 @@ module.exports = {
         const message = 'Could not create a PaymentIntent.';
         strapi.log.error(`${message}\n${error}`);
         ctx.response.badImplementation(message);
-      });
+      })
+      .then(() => Promise.all(
+        participants.map(({
+          type, programmingLanguages, university, course, yearOfStudy, industry
+        }) => {
+          if (type || university || course || yearOfStudy.length > 0 || industry || programmingLanguages) {
+            strapi.services.survey.create({
+              type, university, course, yearOfStudy, industry,
+              date: new Date(),
+              programmingLanguages: programmingLanguages.join(';')
+            });
+          }
+        })
+      ));
   },
   confirmPaymentIntent: async ctx => {
     const Stripe = stripe(strapi.config.currentEnvironment.stripeApiKey);
@@ -108,10 +121,11 @@ module.exports = {
 
     return Promise
       .all(order.participants.map(
-        ({ ticket, name, email }) => strapi.services.ticket
+        ({ ticket, name, email, linkedin }) => strapi.services.ticket
           .create({
             name,
             email,
+            linkedin,
             type: ticket,
             order: order.id,
             date: Date.now(),

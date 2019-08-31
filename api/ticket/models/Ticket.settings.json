@@ -40,6 +40,9 @@
     "order": {
       "model": "order",
       "via": "tickets"
+    },
+    "linkedin": {
+      "type": "string"
     }
   }
 }
