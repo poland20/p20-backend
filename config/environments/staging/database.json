@@ -7,7 +7,7 @@
         "client": "mongo",
         "host": "db",
         "port": "27017",
-        "database": "p20-backend",
+        "database": "${process.env.DB_NAME || 'p20-backend'}",
         "username": "",
         "password": ""
       },

@@ -19,6 +19,19 @@ services:
     command: sh -c "yarn start"
     depends_on:
       - db
+  api-dev:
+    build:
+      context: ../p20-backend
+      dockerfile: strapi.Dockerfile
+      args:
+        - NODE_ENV=staging
+    environment:
+      - NODE_ENV=staging
+    container_name: p20-backend-dev
+    command: sh -c "DB_NAME=p20-backend-dev yarn start"
+    restart: unless-stopped
+    depends_on:
+      - db
   db:
     image: mongo
     container_name: p20-db
