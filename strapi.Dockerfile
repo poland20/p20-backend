@@ -18,6 +18,9 @@ FROM node:10-alpine
 
 ARG NODE_ENV
 
+RUN apk add --no-cache tzdata
+ENV TZ Europe/London
+
 WORKDIR /api
 
 COPY --from=builder node_modules node_modules
