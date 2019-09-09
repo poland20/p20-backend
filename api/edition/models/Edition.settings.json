@@ -45,10 +45,6 @@
     "venue": {
       "model": "venue"
     },
-    "agendaDays": {
-      "collection": "agendaday",
-      "via": "edition"
-    },
     "teamMembers": {
       "collection": "teammember",
       "via": "editions",
@@ -71,6 +67,12 @@
     },
     "speakerCategories": {
       "collection": "speakercategory",
+      "dominant": true,
+      "via": "editions"
+    },
+    "agendaDays": {
+      "collection": "agendaday",
+      "dominant": true,
       "via": "editions"
     }
   }

@@ -28,10 +28,11 @@
     },
     "events": {
       "collection": "agendaevent",
-      "via": "day"
+      "via": "days",
+      "dominant": true
     },
-    "edition": {
-      "model": "edition",
+    "editions": {
+      "collection": "edition",
       "via": "agendaDays"
     }
   }

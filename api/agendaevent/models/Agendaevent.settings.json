@@ -33,14 +33,14 @@
     "category": {
       "model": "agendaeventcategory"
     },
-    "day": {
-      "model": "agendaday",
-      "via": "events"
-    },
     "speakers": {
       "collection": "speaker",
       "dominant": true,
       "via": "agendaEvents"
+    },
+    "days": {
+      "collection": "agendaday",
+      "via": "events"
     }
   }
 }
