@@ -7,7 +7,7 @@ const shortid = require('shortid');
 module.exports = {
   createPaymentIntent: async ctx => {
     const Stripe = stripe(strapi.config.currentEnvironment.stripeApiKey);
-    const { basket, participants } = ctx.request.body;
+    const { basket, participants, coupon } = ctx.request.body;
     if (!basket || !participants) {
       return ctx.response.badRequest('Basket or participants are missing.');
     }
@@ -34,7 +34,24 @@ module.exports = {
       description.add(`${ticketType.name} (x${quantity})`);
     }
 
-    if (amount < 50) {
+    let couponType;
+    if (coupon) {
+      couponType = await Coupon.findOne({ code: coupon, active: true });
+      if (!couponType) {
+        const error = `Coupon code ${coupon} is not valid.`;
+        strapi.log.error(error);
+        return ctx.response.badRequest(error);
+      }
+
+      if (couponType.type === 'discountFixed') {
+        amount = Math.max(amount - (couponType.value * 100), 100);
+      } else if (couponType.type === 'discountPercentage') {
+        amount = Math.ceil(amount * (1 - couponType.value / 100));
+        amount = Math.max(amount, 100);
+      }
+    }
+
+    if (amount < 100) {
       const error = 'There was a problem with calculating the payment amount.';
       strapi.log.error(error);
       return ctx.response.badImplementation(error);
@@ -48,13 +65,15 @@ module.exports = {
         description: [...description].join(', '),
         currency: 'gbp',
         metadata: {
-          orderCode
+          orderCode,
+          coupon
         }
       })
       .then((paymentIntent) => {
         strapi.services.order.create({
           basket,
           participants,
+          coupon: couponType,
           amount: amount / 100,
           paymentIntent: paymentIntent.id,
           status: 'pending',
