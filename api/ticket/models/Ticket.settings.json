@@ -37,12 +37,12 @@
       "required": true,
       "type": "string"
     },
+    "linkedin": {
+      "type": "string"
+    },
     "order": {
       "model": "order",
       "via": "tickets"
-    },
-    "linkedin": {
-      "type": "string"
     }
   }
 }

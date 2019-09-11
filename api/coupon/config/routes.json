@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/coupons",
+      "handler": "Coupon.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/coupons/count",
+      "handler": "Coupon.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/coupons/check",
+      "handler": "Coupon.checkCoupon",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/coupons/:_id",
+      "handler": "Coupon.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/coupons",
+      "handler": "Coupon.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/coupons/:_id",
+      "handler": "Coupon.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/coupons/:_id",
+      "handler": "Coupon.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -33,6 +33,10 @@
     },
     "benefits": {
       "type": "text"
+    },
+    "coupons": {
+      "collection": "coupon",
+      "via": "basketCondition"
     }
   }
 }

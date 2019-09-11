@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "coupon",
+  "info": {
+    "name": "coupon",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "code": {
+      "required": true,
+      "unique": true,
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "discountFixed",
+        "discountPercentage",
+        "ticketAccess"
+      ],
+      "type": "enumeration"
+    },
+    "basketCondition": {
+      "collection": "tickettype",
+      "via": "coupons",
+      "dominant": true
+    },
+    "value": {
+      "type": "decimal",
+      "required": true
+    },
+    "active": {
+      "default": true,
+      "type": "boolean"
+    }
+  }
+}

@@ -50,6 +50,9 @@
     "tickets": {
       "collection": "ticket",
       "via": "order"
+    },
+    "coupon": {
+      "model": "coupon"
     }
   }
 }
