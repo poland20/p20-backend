@@ -44,7 +44,6 @@
     },
     "code": {
       "unique": true,
-      "required": true,
       "type": "string"
     },
     "tickets": {

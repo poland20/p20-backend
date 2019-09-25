@@ -81,7 +81,7 @@ module.exports = {
           code: orderCode
         });
 
-        strapi.log.info(`Successfully created order ${orderCode}`);
+        strapi.log.info(`Created order ${orderCode}`);
         ctx.send({ client_secret: paymentIntent.client_secret });
       })
       .catch(error => {
@@ -148,7 +148,6 @@ module.exports = {
             type: ticket,
             order: order.id,
             date: Date.now(),
-            code: shortid.generate(),
             checkedIn: false
           })
           .then(strapi.services.ticket.sendConfirmation)
@@ -161,12 +160,12 @@ module.exports = {
           const ticketType = await Tickettype.findById(id);
           const newQuantity = ticketType.quantity - quantity;
           return strapi.services.tickettype.update({ id }, {
-            quantity: newQuantity >= 0 ? newQuantity : 0,
+            quantity: newQuantity > 0 ? newQuantity : 0,
           });
         })
       ))
       .then(() => {
-        strapi.log.info(`Successfully processed order ${order.code}`);
+        strapi.log.info(`Processed order ${order.code}`);
         ctx.send(200);
       })
       .catch(err => {

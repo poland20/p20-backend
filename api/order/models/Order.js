@@ -1,4 +1,5 @@
 'use strict';
+const shortid = require('shortid');
 
 /**
  * Lifecycle callbacks for the `Order` model.
@@ -30,7 +31,11 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  // beforeCreate: async (model) => {},
+  beforeCreate: async (model) => {
+    if (!model.code) {
+      model.code = shortid.generate();
+    }
+  },
 
   // After creating a value.
   // Fired after an `insert` query.
