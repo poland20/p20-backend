@@ -25,11 +25,6 @@
       ],
       "type": "enumeration"
     },
-    "basketCondition": {
-      "collection": "tickettype",
-      "via": "coupons",
-      "dominant": true
-    },
     "value": {
       "type": "decimal",
       "required": true
@@ -37,6 +32,14 @@
     "active": {
       "default": true,
       "type": "boolean"
+    },
+    "quantity": {
+      "type": "integer",
+      "default": "-1",
+      "min": -1
+    },
+    "basketCondition": {
+      "collection": "tickettype"
     }
   }
 }
