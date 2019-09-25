@@ -3,7 +3,8 @@
   "collectionName": "survey",
   "info": {
     "name": "survey",
-    "description": ""
+    "description": "",
+    "mainField": "date"
   },
   "options": {
     "timestamps": [

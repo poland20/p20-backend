@@ -29,8 +29,7 @@
       "type": "string"
     },
     "showInPrevious": {
-      "type": "boolean",
-      "required": true
+      "type": "boolean"
     },
     "category": {
       "model": "sponsorcategory"

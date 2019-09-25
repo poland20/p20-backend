@@ -3,7 +3,8 @@
   "collectionName": "teammember",
   "info": {
     "name": "teammember",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [

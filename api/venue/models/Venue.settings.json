@@ -3,7 +3,8 @@
   "collectionName": "venue",
   "info": {
     "name": "venue",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [
@@ -19,6 +20,12 @@
     "location": {
       "required": true,
       "type": "text"
+    },
+    "latitude": {
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
     }
   }
 }
