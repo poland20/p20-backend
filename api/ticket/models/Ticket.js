@@ -1,4 +1,5 @@
 'use strict';
+const shortid = require('shortid');
 
 /**
  * Lifecycle callbacks for the `Ticket` model.
@@ -30,7 +31,11 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  // beforeCreate: async (model) => {},
+  beforeCreate: async (model) => {
+    if (!model.code) {
+      model.code = shortid.generate();
+    }
+  },
 
   // After creating a value.
   // Fired after an `insert` query.
@@ -44,11 +49,9 @@ module.exports = {
   // Fired after an `update` query.
   afterUpdate: async (model, /*result*/) => {
     const ticket = model.getUpdate();
-    if (!ticket.email) {
-      return;
+    if (ticket.email) {
+      strapi.services.ticket.sendConfirmation(ticket);
     }
-
-    return strapi.services.ticket.sendConfirmation(ticket);
   },
 
   // Before destroying a value.
