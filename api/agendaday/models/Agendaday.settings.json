@@ -3,7 +3,8 @@
   "collectionName": "agendaday",
   "info": {
     "name": "agendaday",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [
@@ -27,13 +28,7 @@
       "model": "venue"
     },
     "events": {
-      "collection": "agendaevent",
-      "via": "days",
-      "dominant": true
-    },
-    "editions": {
-      "collection": "edition",
-      "via": "agendaDays"
+      "collection": "agendaevent"
     }
   }
 }

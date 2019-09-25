@@ -30,15 +30,15 @@
     "description": {
       "type": "text"
     },
-    "agendaEvents": {
-      "collection": "agendaevent",
-      "via": "speakers"
-    },
     "category": {
       "model": "speakercategory"
     },
     "editions": {
       "collection": "edition",
+      "via": "speakers"
+    },
+    "agendaevents": {
+      "collection": "agendaevent",
       "via": "speakers"
     }
   }

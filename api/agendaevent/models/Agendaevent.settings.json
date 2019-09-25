@@ -35,12 +35,8 @@
     },
     "speakers": {
       "collection": "speaker",
-      "dominant": true,
-      "via": "agendaEvents"
-    },
-    "days": {
-      "collection": "agendaday",
-      "via": "events"
+      "via": "agendaevents",
+      "dominant": true
     }
   }
 }

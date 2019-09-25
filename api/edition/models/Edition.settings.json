@@ -42,16 +42,8 @@
       "required": true,
       "type": "date"
     },
-    "venue": {
-      "model": "venue"
-    },
     "teamMembers": {
       "collection": "teammember",
-      "via": "editions",
-      "dominant": true
-    },
-    "sponsors": {
-      "collection": "sponsor",
       "via": "editions",
       "dominant": true
     },
@@ -60,6 +52,12 @@
       "via": "editions",
       "dominant": true
     },
+    "venue": {
+      "model": "venue"
+    },
+    "agendaDays": {
+      "collection": "agendaday"
+    },
     "sponsorCategories": {
       "collection": "sponsorcategory",
       "via": "editions",
@@ -67,11 +65,11 @@
     },
     "speakerCategories": {
       "collection": "speakercategory",
-      "dominant": true,
-      "via": "editions"
+      "via": "editions",
+      "dominant": true
     },
-    "agendaDays": {
-      "collection": "agendaday",
+    "sponsors": {
+      "collection": "sponsor",
       "dominant": true,
       "via": "editions"
     }
