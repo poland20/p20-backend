@@ -2,14 +2,6 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/currentEdition",
-      "handler": "Edition.currentEdition",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
       "path": "/editions",
       "handler": "Edition.find",
       "config": {
@@ -18,8 +10,8 @@
     },
     {
       "method": "GET",
-      "path": "/editions/count",
-      "handler": "Edition.count",
+      "path": "/editions/current",
+      "handler": "Edition.current",
       "config": {
         "policies": []
       }
@@ -28,6 +20,14 @@
       "method": "GET",
       "path": "/editions/:year",
       "handler": "Edition.findOneByYear",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/editions/count",
+      "handler": "Edition.count",
       "config": {
         "policies": []
       }

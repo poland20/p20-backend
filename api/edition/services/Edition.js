@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-  findOneDeep(params) {
+  findOne(params) {
     let populate = Edition.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias);
@@ -31,11 +31,5 @@ module.exports = {
     ]);
 
     return Edition.findOne(params).populate(populate);
-  },
-  currentEdition() {
-    return strapi.services.edition.findOneDeep({ current: true });
-  },
-  findOneByYear(params) {
-    return strapi.services.edition.findOneDeep({ year: params.year });
   }
 };

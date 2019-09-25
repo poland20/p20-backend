@@ -5,6 +5,6 @@
  */
 
 module.exports = {
-  currentEdition: () => strapi.services.edition.currentEdition(),
-  findOneByYear: ctx => strapi.services.edition.findOneByYear(ctx.params),
+  findOneByYear: ({ params }) => strapi.services.edition.findOne({ year: params.year }),
+  current: () => strapi.services.edition.findOne({ current: true })
 };
