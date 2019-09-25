@@ -112,3 +112,5 @@ coverage
 exports
 .cache
 build
+
+.idea/
