@@ -3,7 +3,8 @@
   "collectionName": "ticket",
   "info": {
     "name": "ticket",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [
@@ -20,9 +21,6 @@
       "required": true,
       "type": "email"
     },
-    "type": {
-      "model": "tickettype"
-    },
     "checkedIn": {
       "type": "boolean"
     },
@@ -34,7 +32,6 @@
     },
     "code": {
       "unique": true,
-      "required": true,
       "type": "string"
     },
     "linkedin": {
@@ -43,6 +40,9 @@
     "order": {
       "model": "order",
       "via": "tickets"
+    },
+    "type": {
+      "model": "tickettype"
     }
   }
 }

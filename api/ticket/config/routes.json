@@ -26,6 +26,22 @@
     },
     {
       "method": "POST",
+      "path": "/tickets/verify",
+      "handler": "Ticket.verify",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tickets/checkIn",
+      "handler": "Ticket.checkIn",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/tickets",
       "handler": "Ticket.create",
       "config": {

@@ -62,7 +62,7 @@ module.exports = {
               subject: `Your Conference Ticket [${ticket.code}]`
             })
             .then(() => {
-              strapi.log.info(`Successfully sent ticket confirmation ${ticket.code} to ${ticket.email}`);
+              strapi.log.info(`Sent ticket confirmation ${ticket.code} to ${ticket.email}`);
             })
             .catch(err => {
               strapi.log.error(`Failed to send ticket confirmation ${ticket.code} to ${ticket.email}:\n${err}`);

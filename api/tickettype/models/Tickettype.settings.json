@@ -1,12 +1,15 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "tickettype",
   "info": {
     "name": "tickettype",
     "description": ""
   },
   "options": {
-    "timestamps": true
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
   },
   "attributes": {
     "name": {
@@ -34,9 +37,11 @@
     "benefits": {
       "type": "text"
     },
-    "coupons": {
-      "collection": "coupon",
-      "via": "basketCondition"
+    "hidden": {
+      "type": "boolean"
+    },
+    "ballAccess": {
+      "type": "boolean"
     }
   }
 }
