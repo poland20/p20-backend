@@ -51,9 +51,9 @@ module.exports = {
       const warning = `Ticket ${code} is already checked in`;
       strapi.log.warn(warning);
       return ctx.send({
+        checkedInDate,
         status: 'warning',
         message: 'Ticket is already checked in.',
-        checkedInDate: checkedInDate,
       });
     }
 
@@ -67,7 +67,7 @@ module.exports = {
         strapi.log.info(`Checked-in ticket ${code}`);
         ctx.send({
           status: 'success',
-          checkedInDate: date,
+          checkedInDate: checkedInDate || date
         });
       })
       .catch(err => {
