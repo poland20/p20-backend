@@ -47,9 +47,10 @@ module.exports = {
 
   // After updating a value.
   // Fired after an `update` query.
-  afterUpdate: async (model, /*result*/) => {
-    const ticket = model.getUpdate();
-    if (ticket.email) {
+  afterUpdate: async (model) => {
+    const update = model.getUpdate()['$set'];
+    if (update.email) {
+      const ticket = await strapi.services.ticket.findOne({ id: update._id });
       strapi.services.ticket.sendConfirmation(ticket);
     }
   },

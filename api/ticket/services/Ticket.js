@@ -18,7 +18,7 @@ module.exports = {
       }
     });
 
-    const currentEdition = await strapi.services.edition.currentEdition();
+    const currentEdition = await strapi.controllers.edition.current();
     if (!ticket.order.code) {
       ticket.order = await Order.findById(ticket.order);
     }
