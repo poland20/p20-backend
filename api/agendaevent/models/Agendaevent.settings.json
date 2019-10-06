@@ -35,8 +35,8 @@
     },
     "speakers": {
       "collection": "speaker",
-      "via": "agendaevents",
-      "dominant": true
+      "dominant": true,
+      "via": "agendaevents"
     }
   }
 }

@@ -40,6 +40,9 @@
     "agendaevents": {
       "collection": "agendaevent",
       "via": "speakers"
+    },
+    "askAbout": {
+      "type": "text"
     }
   }
 }

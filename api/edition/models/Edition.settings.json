@@ -47,11 +47,6 @@
       "via": "editions",
       "dominant": true
     },
-    "speakers": {
-      "collection": "speaker",
-      "via": "editions",
-      "dominant": true
-    },
     "venue": {
       "model": "venue"
     },
@@ -70,6 +65,11 @@
     },
     "sponsors": {
       "collection": "sponsor",
+      "dominant": true,
+      "via": "editions"
+    },
+    "speakers": {
+      "collection": "speaker",
       "dominant": true,
       "via": "editions"
     }
