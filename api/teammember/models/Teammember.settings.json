@@ -41,6 +41,9 @@
     "editions": {
       "collection": "edition",
       "via": "teamMembers"
+    },
+    "instagram": {
+      "type": "string"
     }
   }
 }

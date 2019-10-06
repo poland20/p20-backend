@@ -42,11 +42,6 @@
       "required": true,
       "type": "date"
     },
-    "teamMembers": {
-      "collection": "teammember",
-      "via": "editions",
-      "dominant": true
-    },
     "venue": {
       "model": "venue"
     },
@@ -70,6 +65,11 @@
     },
     "speakers": {
       "collection": "speaker",
+      "dominant": true,
+      "via": "editions"
+    },
+    "teamMembers": {
+      "collection": "teammember",
       "dominant": true,
       "via": "editions"
     }
