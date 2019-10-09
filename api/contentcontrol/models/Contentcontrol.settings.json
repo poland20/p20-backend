@@ -45,12 +45,12 @@
     "githubUrl": {
       "type": "string"
     },
-    "ticketControl": {
-      "model": "ticketcontrol"
-    },
     "showPreviousSponsors": {
       "default": true,
       "type": "boolean"
+    },
+    "ticketControl": {
+      "model": "ticketcontrol"
     }
   }
 }
