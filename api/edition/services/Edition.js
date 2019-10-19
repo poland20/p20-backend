@@ -5,6 +5,28 @@
  */
 
 module.exports = {
+  find(params, populate) {
+    populate = [
+      {
+        path: 'venue'
+      },
+      {
+        path: 'agendaDays',
+        populate: [
+          {
+            path: 'events',
+            populate: [
+              {
+                path: 'speakers'
+              }
+            ]
+          }
+        ]
+      }
+    ];
+
+    return strapi.query('edition').find(params, populate);
+  },
   findOne(params) {
     let populate = Edition.associations
       .filter(ast => ast.autoPopulate !== false)
