@@ -19,10 +19,10 @@ module.exports = {
     });
 
     const currentEdition = await strapi.controllers.edition.current();
-    if (!ticket.order.code) {
+    if (!ticket.order || !ticket.order.code) {
       ticket.order = await Order.findById(ticket.order);
     }
-    if (!ticket.type.name) {
+    if (!ticket.type || !ticket.type.name) {
       ticket.type = await Tickettype.findById(ticket.type);
     }
 
@@ -31,7 +31,7 @@ module.exports = {
       ticket: ticket,
       order: ticket.order,
       edition: {
-        startDate: currentEdition.endDate.toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric' }),
+        startDate: currentEdition.endDate.toLocaleString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
       },
       venue: currentEdition.venue
     });

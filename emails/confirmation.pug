@@ -26,7 +26,10 @@ html(lang="en-gb")
           td(style="padding-right: 16px;")
             h1 Ticket Confirmation
     p Dear #{name},
-    p Thank you for your purchase! This e-mail confirms the successful purchase of the <b>#{ticket.type.name}</b> ticket for order #{order.code}.
+    if order
+      p Thank you for your purchase! This e-mail confirms the successful purchase of the <b>#{ticket.type.name}</b> ticket for order #{order.code}.
+    else
+      p This e-mail is a confirmation of your <b>#{ticket.type.name}</b> ticket.
     p We can't wait to see you during this exciting event!
     br
     h2 Save the Date
