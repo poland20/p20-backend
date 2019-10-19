@@ -3,7 +3,8 @@
   "collectionName": "sponsor",
   "info": {
     "name": "sponsor",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [

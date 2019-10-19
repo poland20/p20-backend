@@ -3,7 +3,8 @@
   "collectionName": "agendaeventcategory",
   "info": {
     "name": "agendaeventcategory",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [

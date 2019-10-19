@@ -3,7 +3,8 @@
   "collectionName": "edition",
   "info": {
     "name": "edition",
-    "description": ""
+    "description": "",
+    "mainField": "year"
   },
   "options": {
     "timestamps": [

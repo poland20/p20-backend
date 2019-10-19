@@ -3,7 +3,8 @@
   "collectionName": "order",
   "info": {
     "name": "order",
-    "description": ""
+    "description": "",
+    "mainField": "code"
   },
   "options": {
     "timestamps": [
@@ -46,12 +47,12 @@
       "unique": true,
       "type": "string"
     },
+    "coupon": {
+      "model": "coupon"
+    },
     "tickets": {
       "collection": "ticket",
       "via": "order"
-    },
-    "coupon": {
-      "model": "coupon"
     }
   }
 }

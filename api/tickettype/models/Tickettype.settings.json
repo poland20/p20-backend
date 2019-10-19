@@ -3,7 +3,8 @@
   "collectionName": "tickettype",
   "info": {
     "name": "tickettype",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [

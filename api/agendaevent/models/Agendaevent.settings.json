@@ -3,7 +3,8 @@
   "collectionName": "agendaevent",
   "info": {
     "name": "agendaevent",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [
@@ -35,8 +36,11 @@
     },
     "speakers": {
       "collection": "speaker",
-      "dominant": true,
-      "via": "agendaevents"
+      "via": "agendaevents",
+      "dominant": true
+    },
+    "featured": {
+      "type": "boolean"
     }
   }
 }

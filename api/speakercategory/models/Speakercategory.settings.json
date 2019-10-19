@@ -3,7 +3,8 @@
   "collectionName": "speakercategory",
   "info": {
     "name": "speakercategory",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [

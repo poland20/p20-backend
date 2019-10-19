@@ -3,7 +3,8 @@
   "collectionName": "coupon",
   "info": {
     "name": "coupon",
-    "description": ""
+    "description": "",
+    "mainField": "code"
   },
   "options": {
     "timestamps": [

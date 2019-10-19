@@ -3,7 +3,8 @@
   "collectionName": "speaker",
   "info": {
     "name": "speaker",
-    "description": ""
+    "description": "",
+    "mainField": "name"
   },
   "options": {
     "timestamps": [
@@ -37,12 +38,12 @@
       "collection": "edition",
       "via": "speakers"
     },
+    "askAbout": {
+      "type": "text"
+    },
     "agendaevents": {
       "collection": "agendaevent",
       "via": "speakers"
-    },
-    "askAbout": {
-      "type": "text"
     }
   }
 }
