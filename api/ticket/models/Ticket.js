@@ -35,11 +35,33 @@ module.exports = {
     if (!model.code) {
       model.code = shortid.generate();
     }
+    if (!model.date) {
+      model.date = new Date();
+    }
+    if (typeof model.checkedIn === 'undefined') {
+      model.checkedIn = false;
+    }
+    if (typeof model.checkedInBall === 'undefined') {
+      model.checkedInBall = false;
+    }
   },
 
   // After creating a value.
   // Fired after an `insert` query.
-  // afterCreate: async (model, result) => {},
+  afterCreate: async (model, result) => {
+    if (result.email
+      && !result.checkedIn
+      && !result.checkedInBall
+      && !result.checkedInDate
+    ) {
+      setTimeout(async () => {
+        const ticket = await Ticket.findById(result._id);
+        if (ticket && !ticket.order) {
+          strapi.services.ticket.sendConfirmation(ticket);
+        }
+      }, 1000);
+    }
+  },
 
   // Before updating a value.
   // Fired before an `update` query.
@@ -49,9 +71,18 @@ module.exports = {
   // Fired after an `update` query.
   afterUpdate: async (model) => {
     const update = model.getUpdate()['$set'];
-    if (update.email) {
-      const ticket = await strapi.services.ticket.findOne({ id: update._id });
-      strapi.services.ticket.sendConfirmation(ticket);
+    if (update
+      && update.email
+      && !update.checkedIn
+      && !update.checkedInBall
+      && !update.checkedInDate
+    ) {
+      setTimeout(async () => {
+        const ticket = await Ticket.findById(update._id);
+        if (ticket) {
+          strapi.services.ticket.sendConfirmation(ticket);
+        }
+      }, 1000);
     }
   },
 
