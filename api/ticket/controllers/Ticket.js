@@ -39,35 +39,46 @@ module.exports = {
     }
 
     const type = await Tickettype.findById(ticket.type);
-    if (ballAccess === true && !type.ballAccess) {
+    if (ballAccess && !type.ballAccess) {
       const error = `Ticket ${code} does not have ball access`;
       strapi.log.error(error);
       return ctx.response.notAcceptable('Ticket does not have ball access.');
     }
 
-    const { id, checkedIn, checkedInDate } = ticket;
+    const { id, name, checkedIn, checkedInBall, checkedInDate } = ticket;
 
-    if (!ballAccess && checkedIn) {
+    if ((!ballAccess && checkedIn) || (ballAccess && checkedInBall)) {
       const warning = `Ticket ${code} is already checked in`;
       strapi.log.warn(warning);
       return ctx.send({
         checkedInDate,
+        name,
+        type: type.name,
         status: 'warning',
         message: 'Ticket is already checked in.',
       });
     }
 
     const date = new Date();
+    const update = {
+      checkedInDate: date
+    };
+
+    if (ballAccess) {
+      update.checkedInBall = true;
+    } else {
+      update.checkedIn = true;
+    }
+
     return strapi.services.ticket
-      .update({ id }, {
-        checkedIn: true,
-        checkedInDate: date
-      })
+      .update({ id }, update)
       .then(() => {
         strapi.log.info(`Checked-in ticket ${code}`);
         ctx.send({
           status: 'success',
-          checkedInDate: checkedInDate || date
+          checkedInDate: checkedInDate || date,
+          name,
+          type: type.name,
         });
       })
       .catch(err => {
