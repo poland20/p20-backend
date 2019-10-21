@@ -45,6 +45,12 @@ module.exports = {
       return ctx.response.notAcceptable('Ticket does not have ball access.');
     }
 
+    if (!ballAccess && type.ballOnly) {
+      const error = `Ticket ${code} is ball-only`;
+      strapi.log.error(error);
+      return ctx.response.notAcceptable('Ticket is ball-only.');
+    }
+
     const { id, name, checkedIn, checkedInBall, checkedInDate } = ticket;
 
     if ((!ballAccess && checkedIn) || (ballAccess && checkedInBall)) {

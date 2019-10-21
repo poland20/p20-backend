@@ -43,6 +43,9 @@
     },
     "ballAccess": {
       "type": "boolean"
+    },
+    "ballOnly": {
+      "type": "boolean"
     }
   }
 }

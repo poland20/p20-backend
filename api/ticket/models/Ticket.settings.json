@@ -41,11 +41,11 @@
       "model": "order",
       "via": "tickets"
     },
-    "type": {
-      "model": "tickettype"
-    },
     "checkedInBall": {
       "type": "boolean"
+    },
+    "type": {
+      "model": "tickettype"
     }
   }
 }
