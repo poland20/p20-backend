@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/pushdevices",
+      "handler": "Pushdevice.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pushdevices/count",
+      "handler": "Pushdevice.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/pushdevices/:id",
+      "handler": "Pushdevice.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/register",
+      "handler": "Pushdevice.register",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/pushdevices/:id",
+      "handler": "Pushdevice.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/pushdevices/:id",
+      "handler": "Pushdevice.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

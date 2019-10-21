@@ -1,0 +1,19 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "pushdevice",
+    "description": "",
+    "mainField": "token"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "token": {
+      "unique": true,
+      "required": true,
+      "type": "string"
+    }
+  }
+}

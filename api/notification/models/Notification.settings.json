@@ -1,0 +1,42 @@
+{
+  "connection": "default",
+  "collectionName": "notification",
+  "info": {
+    "name": "notification",
+    "description": ""
+  },
+  "options": {
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  "attributes": {
+    "title": {
+      "required": true,
+      "type": "string"
+    },
+    "description": {
+      "required": true,
+      "type": "string"
+    },
+    "priority": {
+      "enum": [
+        "default",
+        "normal",
+        "high"
+      ],
+      "type": "enumeration"
+    },
+    "status": {
+      "enum": [
+        "sending",
+        "sent",
+        "failed"
+      ],
+      "type": "enumeration",
+      "enumDefault": "sending",
+      "required": true
+    }
+  }
+}
